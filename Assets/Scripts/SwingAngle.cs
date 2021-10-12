@@ -6,11 +6,13 @@ public class SwingAngle : MonoBehaviour
     public Text angleText;
 
     private Vector3 lastPosition;
+    private float lastSwingTime;
 
     // Start is called before the first frame update
     void Start()
     {
         lastPosition = this.transform.position;
+        lastSwingTime = 0;
     }
 
     // Update is called once per frame
@@ -20,8 +22,8 @@ public class SwingAngle : MonoBehaviour
         Vector3 velocity = (this.transform.position - lastPosition) / Time.deltaTime;
         lastPosition = this.transform.position;
 
-        // if the sword is moving above some threshold
-        if (velocity.magnitude > 2)
+        // if the sword is moving above some threshold and enough time has passed since the last swing
+        if (velocity.magnitude > 5 && (Time.time-lastSwingTime)>1.0f)
         {
             // reduce to a 2D vector and normalize
             velocity.z = 0;
@@ -40,6 +42,9 @@ public class SwingAngle : MonoBehaviour
 
             // update the text to display the angle
             angleText.text = "" + (swingAngle * 180 / Mathf.PI);
+
+            // update the swing time
+            lastSwingTime = Time.time;
         }
         
     }
