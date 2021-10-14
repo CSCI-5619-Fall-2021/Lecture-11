@@ -1,6 +1,6 @@
 # Lecture 11: Spatial Input (Part 2)
 
-Detailed explanation of this code can be found in the lecture video (will be uploaded after class).
+Detailed explanation of this code can be found in the [lecture video](https://mediaspace.umn.edu/media/t/1_685de815).
 
 ## Topics
 
